@@ -1,0 +1,25 @@
+language: bash
+
+services:
+  - docker
+
+install:
+  - sudo pip install --upgrade pip
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+
+deploy:
+  provider: script
+  script: bash deploy.sh
+  skip_cleanup: true
+  on:
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^(dev|testing|demo|training|staging|master|rrt\/.*)$
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+    recipients:
+      - dan@sartography.com
+
