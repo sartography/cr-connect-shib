@@ -1,5 +1,5 @@
 FROM nginx
-RUN apg-get update && apt-get install --no-install-recommends --no-install-suggests -y curl
+RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y curl
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Script for substituting environment variables
