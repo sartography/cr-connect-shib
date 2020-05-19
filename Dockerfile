@@ -1,5 +1,4 @@
 FROM nginx
-RUN yum -y update && yum install -y curl
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Script for substituting environment variables
@@ -10,4 +9,4 @@ RUN chmod +x ./entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh", "/etc/nginx/nginx.conf", "PORT0,LOGIN_PATH,BACKEND_PATH,BACKEND_HOST,PB_PATH,PB_HOST,BPMN_PATH,BPMN_HOST,FRONTEND_PATH,FRONTEND_HOST"]
 
 # Start server
-CMD ["nginx-debug", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
