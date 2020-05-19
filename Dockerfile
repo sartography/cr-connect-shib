@@ -1,5 +1,5 @@
 FROM nginx
-
+RUN yum -y update && yum install -y curl
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Script for substituting environment variables
