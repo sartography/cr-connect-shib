@@ -10,4 +10,4 @@ RUN chmod +x ./entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh", "/etc/nginx/nginx.conf", "PORT0,LOGIN_PATH,BACKEND_PATH,BACKEND_HOST,PB_PATH,PB_HOST,BPMN_PATH,BPMN_HOST,FRONTEND_PATH,FRONTEND_HOST"]
 
 # Start server
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx-debug", "-g", "daemon off;"]
