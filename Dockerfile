@@ -1,5 +1,15 @@
 FROM nginx:alpine
-RUN apk add --no-cache curl gettext
+
+ENV BUILD_DEPS="gettext curl"  \
+    RUNTIME_DEPS="libintl"
+
+RUN set -x && \
+    apk add --update $RUNTIME_DEPS && \
+    apk add --virtual build_deps $BUILD_DEPS &&  \
+    cp /usr/bin/envsubst /usr/local/bin/envsubst && \
+    cp /usr/bin/curl /usr/local/bin/curl && \
+    apk del build_deps
+
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Script for substituting environment variables
