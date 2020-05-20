@@ -1,5 +1,5 @@
-FROM nginx
-RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y curl
+FROM nginx:alpine
+RUN apk add --no-cache curl gettext
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Script for substituting environment variables
