@@ -10,6 +10,8 @@ RUN set -x && \
     cp /usr/bin/curl /usr/local/bin/curl && \
     apk del build_deps
 
+RUN apk add --no-cache bash
+
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Script for substituting environment variables
