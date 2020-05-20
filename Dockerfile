@@ -3,6 +3,7 @@ FROM nginx:alpine
 RUN set -x && apk add --update --no-cache bash libintl gettext curl
 
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY index.html /etc/nginx/html/index.html
 
 # Script for substituting environment variables
 COPY ./substitute-env-variables.sh ./entrypoint.sh
